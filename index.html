@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKURA - Японский ресторан в Туле</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1547592166-23ac45744acd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #e74c3c;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .opening-date {
+            font-size: 2rem;
+            margin: 20px 0;
+            color: #f1c40f;
+        }
+
+        .address {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #2c3e50;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 80px 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .menu-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Countdown */
+        .countdown {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .time-unit {
+            background: #34495e;
+            padding: 20px;
+            border-radius: 5px;
+            min-width: 100px;
+        }
+
+        .time-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .time-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Reservation */
+        .reservation {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .reservation-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .contact-info {
+            margin: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+            
+            .logo {
+                font-size: 3rem;
+            }
+            
+            .opening-date {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">SAKURA</div>
+            <div class="tagline">Настоящая японская кухня в сердце Тулы</div>
+            <div class="opening-date">Открытие 26 декабря 2024</div>
+            <div class="address">г. Тула, ул. Советская, 3</div>
+            <a href="#reservation" class="cta-button">Забронировать столик</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">О нашем ресторане</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>SAKURA - это не просто ресторан, это путешествие в Японию. Мы создали уникальное пространство, где традиции встречаются с современностью.</p>
+                    <br>
+                    <p>Наш шеф-повар прошел обучение в Токио и привез в Тулу аутентичные рецепты и технику приготовления блюд. Мы используем только свежие продукты и импортные ингредиенты из Японии.</p>
+                    <br>
+                    <p>В нашем меню вы найдете:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Свежие суши и сашими</li>
+                        <li>Ароматные роллы</li>
+                        <li>Настоящий японский рамэн</li>
+                        <li>Теппаны и терияки</li>
+                        <li>Японские десерты и чайные церемонии</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Интерьер ресторана" class="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu">
+        <div class="container">
+            <h2 class="section-title">Наше меню</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1563612116625-3012372fccce?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Суши и сашими">
+                    <h3>Суши и Сашими</h3>
+                    <p>Свежайшие морепродукты, приготовленные по традиционным японским рецептам</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1583623025817-180190b29d48?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Роллы">
+                    <h3>Авторские роллы</h3>
+                    <p>Уникальные сочетания вкусов от нашего шеф-повара</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1569718212165-3e4c8c57177d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Рамэн">
+                    <h3>Японский рамэн</h3>
+                    <p>Насыщенные бульоны и традиционная лапша</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section class="countdown">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">До открытия осталось</h2>
+            <div class="countdown-timer">
+                <div class="time-unit">
+                    <span class="time-number" id="days">00</span>
+                    <span class="time-label">дней</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="hours">00</span>
+                    <span class="time-label">часов</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="minutes">00</span>
+                    <span class="time-label">минут</span>
+                </div>
+                <div class="time-unit">
+                    <span class="time-number" id="seconds">00</span>
+                    <span class="time-label">секунд</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation" id="reservation">
+        <div class="container">
+            <h2 class="section-title">Забронируйте столик на открытие</h2>
+            <div class="reservation-form">
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Количество гостей</label>
+                        <input type="number" id="guests" name="guests" min="1" max="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Предпочтительная дата</label>
+                        <input type="date" id="date" name="date" min="2024-12-26" required>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Забронировать</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="font-size: 2rem; margin-bottom: 20px;">SAKURA</div>
+            <div class="contact-info">
+                <p>г. Тула, ул. Советская, 3</p>
+                <p>Телефон: +7 (4872) 123-456</p>
+                <p>Email: info@sakura-tula.ru</p>
+            </div>
+            <p>© 2024 SAKURA. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const openingDate = new Date('December 26, 2024 18:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = openingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.querySelector('.countdown-timer').innerHTML = '<div style="font-size: 2rem;">Мы открылись! Ждем вас!</div>';
+            }
+        }
+
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Form Submission
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                guests: document.getElementById('guests').value,
+                date: document.getElementById('date').value
+            };
+
+            // В реальном проекте здесь был бы AJAX запрос к серверу
+            alert(`Спасибо, ${formData.name}! Ваша заявка на ${formData.date} для ${formData.guest} гостей принята. Мы свяжемся с вами для подтверждения.`);
+            
+            // Очистка формы
+            this.reset();
+        });
+
+        // Set min date for booking to opening date
+        document.getElementById('date').min = '2024-12-26';
+    </script>
+</body>
+</html>
